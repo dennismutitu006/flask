@@ -1,0 +1,72 @@
+Redirection 3xx
+this class indicates that further action needs to be taken by the user agent 
+inorder to fulfill the request.The action required MAY be carried out by the 
+user agent without interaction with the user if and only if the method used 
+in the second request is GET or HEAD.
+client should detect infinte redietion loops since such loops generate network
+traffic
+ Note: previous versions of this specification recommended a
+      maximum of five redirections. Content developers should be aware
+      that there might be clients that implement such a fixed
+      limitation.
+
+300 Multiple Choices
+indicates that the requested resource has multiple potential representation.
+the server has several versions of the content you requested, and can't decide 
+which one is best for you.
+it is uncommon.
+301-Moved permanently
+resource has been moved to a new location and assignedan new perment uri
+The new permanent URI SHOULD be given by the Location field in the response.
+
+302 -found -it signifies a temporary redirection to a diff location.
+requested resource resided temp under a diff URI.
+If the 302 status code is received in response to a request other than GET or HEAD
+the user agent MUST NOT automatically redirect the request unless 
+it can be confirmed by the user, since this might change the conditions under which the request was issued.
+
+      Note: RFC 1945 and RFC 2068 specify that the client is not allowed
+      to change the method on the redirected request.  However, most
+      existing user agent implementations treat 302 as if it were a 303
+      response, performing a GET on the Location field-value regardless
+      of the original request method. The status codes 303 and 307 have
+      been added for servers that wish to make unambiguously clear which
+      kind of reaction is expected of the client.
+303 - see other 
+instructs the client to use diff http method (like GET instead of POST) t
+o access the resource at another location.
+
+304- Not modified
+indicates that the requested resource has not been modified since the last time
+it was requested by the client
+its a perfomance optimization technique. Server tells the client to use the cached
+version of the resource instead of downloading it again.
+This is commonly used when web pages or files haven't changed, and the client (browser)
+ has a mechanism to check for modifications (using headers like Last-Modified or ETag).
+305 - Use proxy
+instructs the client to access the requested resource through a proxy server
+a proxy server acts as an intermediary b2n the client and actual server that holds the
+resource.It can provide benefits like security, caching and access control.
+this codes includes the address of the proxy server in the response header.
+
+306- unused(switch proxy)
+rarely used, was intended to be similar with 305 but specifically for switching to a diff
+proxy server during a session.
+modern web comm prctices dont rely on 306
+307- Temporary redirect
+signifies that the requested resource has been temporarily moved to a new location.
+is similar to 302 Found, but it specifies that the client should continue using the original
+request method like GET OR POST when following the redirection
+This is useful for situations where the resource might be available at the original 
+location again in the future.
+In essence, these codes along with 300 (Multiple Choices) all deal with redirection 
+or providing information about how to access a resource:
+
+300: Multiple options exist, server can't decide.
+301: Resource permanently moved, go to new location.
+302: Resource temporarily moved, go to new location (use same method).
+303: Access resource at another location using a different method.
+304: Resource hasn't changed, use cached version.
+305: Use a proxy server to access the resource.
+306 (deprecated): Switch to a different proxy server.
+307: Resource temporarily moved, go to new location (use same method).
