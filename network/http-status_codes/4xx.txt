@@ -1,0 +1,53 @@
+Client-error
+These codes indicate that an issue occured on the client side that prevents
+the server from fulfilling the request.
+400- Bad request
+signifies that the server couldn't understand the request due to invalid syntax
+or missing information.
+
+401-Unauthorized 
+client doesn't hav the necesarry authorization to access the requested resource.
+often happens when a resource is protected by a passworrd /requires login.
+for solution client may repeat the request with a suitable authorization header 
+field.
+
+402- Payment required
+code is reserved for future use.
+
+403- Forbidden:
+Client is authorized but doesn't have permission to access the specific resource.
+due to access control lists or other restrictions on the server side.
+Server understood the request but is refusing to fulfill it.
+
+404-Not found -requested resource could not be found on the server. "page not found"
+but might exist somewhere.
+405- Method not allowed - http method used in the request (GET, POST, PUT, DELETE)	
+is not allowed for the specified resource.eg trying to DELETE a resource that only 
+allows you to GET will result to the above error.
+ The response MUST include an Allow header containing a list of valid methods for 
+the requested resource.
+
+406- Not acceptable - server can't generate a response that meets the client's
+preference specified in the request headers(like prefered language or content type)
+
+407 - Proxy authentication required
+similar to 401, but for situations where a proxy server requires authentication b4 
+accessing the requested resource.
+
+408- Request timeout: client took too long to complete the request, and the server
+timed out waiting for a response.
+
+410 Gone - requested resource is no longer available and wont be available again.
+412 Precondition Failed: A precondition specified in the client's request headers (like an expectation for a specific file modification time) wasn't met by the server.
+
+413 Payload Too Large: The request payload (data sent by the client) is larger than the server is willing to accept. This often happens with file uploads that exceed size limits.
+
+414 URI Too Long: The URL (Uniform Resource Identifier) used in the request is too long. Some servers have limitations on the maximum URL length they can handle.
+
+415 Unsupported Media Type: The server doesn't support the media type (like image format) of the data included in the request.
+
+416 Requested Range Not Satisfiable: This occurs in scenarios where the client requests a specific range of data from a resource, but the server can't fulfill that request (e.g., requesting a byte range that goes beyond the end of the file).
+
+417 Expectation Failed: This is a less common code that indicates the server couldn't meet an expectation specified by the client in the "Expect" header field.
+
+It's important for developers and web administrators to understand these client-side error codes to diagnose and resolve issues that prevent users from successfully accessing resources. By providing informative error messages that correspond to the specific error code, users can get a better idea of what went wrong and how to potentially fix it.
