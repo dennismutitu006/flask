@@ -1,0 +1,57 @@
+2xx-successful
+this class indicates that the client's request was successfully received
+understood and accepted.
+200 OK
+request has successeded. Infor returned with the response is dependent on the
+methd used in the request. e,g
+GET -entity corresponding to the requested resource is sent in the response.
+HEAD - the entity header fields corresponding to the requested resource are 
+sent in the response without any message body.
+POST - an entity describing /containing the result of the action.
+TRACE - entity containg the request message as received by the end server.
+
+201 Created
+request fulfilled and resulted to a new resource being created.this new re
+source can be referenced by the URI returned in the entity of the respnse.
+The orgin server must create the resource b4 returning the 201. if the action
+cannot be carried out immediately, server should respond with 202)accepted.
+
+202 Accepted
+the  request has been accpeted for processing but processing has not been completed
+
+203 Nont-Authoritative information
+the returned meta-infor in the entity-header is not the definitive set as availble 
+from the origin server, but gathered from a local or 3rd party copy.
+ The set presented MAY be a subset or superset of the original version
+Use of this response code is not required and is only appropriate when the response
+would otherwisr br 200.
+
+204- No content
+e server has fulfilled the request but does not need to return an entity-body,
+and might want to return the updated met-infor
+repsonse is intended to allow input for actions to take place without causing 
+a change to the user agent'd active doc view.
+
+205- Reset Content
+The server has fulfilled the request and the user agent SHOULD reset the doc which
+caused the request to be sent. 	Response allows input for actions via user input
+, followed by a clearing of the form in which the input is given so that the user can
+easily initiate another input action. The response MUST NOT include an entity.
+
+206- Partial content
+server has fulfilled partial GET request for the resource.
+The request MUST have included a Range header field indicating the desired range 
+response must include the following header fields:
+ Either a Content-Range header field (section 14.16) indicating
+the range included with this response, or a multipart/byteranges
+Content-Type including Content-Range fields for each part. If a
+Content-Length header field is present in the response, its
+value MUST match the actual number of OCTETs transmitted in the
+message-body.
+	date
+	Content-location -if the header would have been sent
+        in a 200 response to the same request
+
+- Expires, Cache-Control, and/or Vary, if the field-value might
+        differ from that sent in any previous response for the same
+        variant
