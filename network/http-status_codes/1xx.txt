@@ -1,0 +1,19 @@
+Status Code Definitions
+Informational 1xx
+class of status code indiactes a provisional response , consisting only of the
+status-line and optional headers.
+It is not supporte by HTTP/1.0 and servers must not senda 1xx response to this
+client
+
+status 100 Continue
+The client should continue with the request.the interim response informs the 
+client that the initial part of the request has been received and has not yet
+been rejected by the server.client should continue sending the remeinder of the
+request or if done ignore this response.
+
+status 101 Switching protocols
+server understands and is willing to comply with the client's request, via
+the upgrade message header, for a change in the application protocol being used on this
+section
+Proctol should be switched only when it is advantatgeous to do so
+e.g switching to a newer version of HTTP.
